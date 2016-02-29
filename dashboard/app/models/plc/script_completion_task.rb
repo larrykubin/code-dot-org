@@ -7,8 +7,8 @@
 #  plc_learning_module_id :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  type                   :string(255)      not null
-#  properties             :text(65535)      not null
+#  type                   :string(255)      default("Plc::Task"), not null
+#  properties             :text(65535)
 #
 # Indexes
 #

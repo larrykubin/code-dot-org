@@ -8,7 +8,6 @@
 #  plc_task_id                         :integer
 #  created_at                          :datetime         not null
 #  updated_at                          :datetime         not null
-#  properties                          :text(65535)
 #
 # Indexes
 #
@@ -19,6 +18,7 @@
 class Plc::EnrollmentTaskAssignment < ActiveRecord::Base
   belongs_to :plc_enrollment_module_assignment, class_name: '::Plc::EnrollmentModuleAssignment'
   belongs_to :plc_task, class_name: '::Plc::Task'
+
 
   validates :plc_enrollment_module_assignment, presence: true
 
