@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+template_name = '3-2-recruitment-NYC'
+region_name = 'NYC'
+
+teacher_csv = "Teachers_#{region_name}.csv"
+raise "Missing teacher csv #{teacher_csv}" unless File.exist? teacher_csv
+
+template_file = File.join('../../pegasus/emails', "#{template_name}.md")
+raise "Missing email template #{template_file}" unless File.exist? template_file
+
+count = `wc -l < '#{teacher_csv}'`.strip.to_i - 1 # -1 to account for the header
+puts "Send bulk email '#{template_name}' to #{count} teachers in '#{teacher_csv}'? [y/N]"
+response = STDIN.gets
+exit unless response.strip.downcase == 'y'
+
+puts 'Sending emails:'
+puts `../send-to-mailing-list '#{template_name}' '#{teacher_csv}'`

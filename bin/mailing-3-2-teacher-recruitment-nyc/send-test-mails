@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+`../send-to-mailing-list 3-2-recruitment-NYC test-params.csv`
