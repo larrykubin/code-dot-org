@@ -23,7 +23,7 @@ class Plc::TasksController < ApplicationController
   # POST /plc/tasks.json
   def create
     if @task.save
-      redirect_to plc_task_url(@task), notice: 'Task was successfully created.'
+      redirect_to edit_plc_task_url(@task), notice: 'Task was successfully created.'
     else
       redirect_to action: :new
     end
@@ -52,9 +52,11 @@ class Plc::TasksController < ApplicationController
     #Depending on the task, we'll require different parameters. Extend this later when we know what the better
     #symbols are
     if params[:plc_learning_resource_task]
-      params.require(:plc_learning_resource_task).permit(:name, :plc_learning_module_id, :type)
+      params.require(:plc_learning_resource_task).permit(:name, :plc_learning_module_id, :type, :resource_url)
     elsif params[:plc_script_completion_task]
-      params.require(:plc_script_completion_task).permit(:name, :plc_learning_module_id, :type)
+      params.require(:plc_script_completion_task).permit(:name, :plc_learning_module_id, :type, :script_id)
+    elsif params[:plc_written_submission_task]
+      params.require(:plc_written_submission_task).permit(:name, :plc_learning_module_id, :type, :assignment_description, :number_peer_reviews_needed)
     elsif params[:plc_task]
       params.require(:plc_task).permit(:name, :plc_learning_module_id, :type)
     end

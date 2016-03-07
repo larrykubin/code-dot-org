@@ -15,22 +15,6 @@
 #  task_assignment_task_index               (plc_task_id)
 #
 
-class Plc::EnrollmentTaskAssignment < ActiveRecord::Base
-  belongs_to :plc_enrollment_module_assignment, class_name: '::Plc::EnrollmentModuleAssignment'
-  belongs_to :plc_task, class_name: '::Plc::Task'
-
-  include SerializedProperties
-  include StiFactory
-
-  validates :plc_enrollment_module_assignment, presence: true
-
-  after_update :check_course_completion
-
-  def complete_assignment!
-    update!(status: :completed)
-  end
-
-  def check_course_completion
-    plc_enrollment_module_assignment.plc_user_course_enrollment.check_for_course_completion
-  end
+class Plc::WrittenTaskAssignmentSubmission < Plc::EnrollmentTaskAssignment
+  serialized_attrs %w(submission_url)
 end
