@@ -16,5 +16,5 @@
 #
 
 class Plc::WrittenTaskAssignmentSubmission < Plc::EnrollmentTaskAssignment
-  serialized_attrs %w(submission_url)
+  serialized_attrs %w(submission)
 end

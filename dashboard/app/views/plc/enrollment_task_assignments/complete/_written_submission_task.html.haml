@@ -1,0 +1,6 @@
+%p This is a writing task
+
+=form_for(@enrollment_task_assignment) do |f|
+  .field
+    = f.label 'Write your submission here'
+    = f.text_area :submission
