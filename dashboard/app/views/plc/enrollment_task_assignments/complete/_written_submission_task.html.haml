@@ -1,16 +1,17 @@
 %p This is a writing task
 
-= form_tag(url: plc_enrollment_task_assignment_path(@enrollment_task_assignment)) do
+= form_for(@enrollment_task_assignment, url: plc_enrollment_task_assignment_path(@enrollment_task_assignment)) do |f|
   %p
     %strong Assignment description:
     = @enrollment_task_assignment.plc_task.assignment_description
   %p Writing
 
-  = text_area_tag :stuff
+  = f.label :writing
+  = f.text_area :submission
 
   %p In a better world, there would be markdown
 
   %p
-    = submit_tag 'Submit evaluation'
+  = f.submit 'Submit'
 
 
