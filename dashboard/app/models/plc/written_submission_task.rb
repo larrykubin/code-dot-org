@@ -20,4 +20,8 @@ class Plc::WrittenSubmissionTask < Plc::Task
     assignment_description
     number_peer_reviews_needed
   )
+
+  def task_assignment_type
+    Plc::WrittenTaskAssignmentSubmission.name
+  end
 end

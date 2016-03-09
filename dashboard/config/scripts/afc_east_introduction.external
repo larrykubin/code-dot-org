@@ -1,0 +1,6 @@
+name 'AFC East Introduction'
+markdown <<MARKDOWN
+This exercise will test your ability to correctly identify the other teams in the AFC East.
+
+<a class="btn btn-large btn-primary next-stage submitButton">Continue</a>
+MARKDOWN

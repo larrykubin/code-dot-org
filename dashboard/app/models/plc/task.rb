@@ -31,4 +31,9 @@ class Plc::Task < ActiveRecord::Base
   def underscored_task_type
     self.class.name.demodulize.underscore
   end
+
+  # Type of task assignment to create. By default, just a general enrollment_task_assignment
+  def task_assignment_type
+    Plc::Task.name
+  end
 end

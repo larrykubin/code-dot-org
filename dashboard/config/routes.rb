@@ -281,6 +281,8 @@ Dashboard::Application.routes.draw do
   get '/plc/enrollment_evaluations/:enrollment_id/perform_evaluation', to: 'plc/enrollment_evaluations#perform_evaluation', as: 'perform_evaluation'
   post '/plc/enrollment_evaluations/:enrollment_id/submit_evaluation', to: 'plc/enrollment_evaluations#submit_evaluation'
 
+  post '/plc/enrollment_task_assignments/:id/submit_written_assignment', to: 'plc/written_submission_task_assignments#submit_written_assignment'
+
   get '/dashboardapi/section_progress/:section_id', to: 'api#section_progress'
   get '/dashboardapi/section_text_responses/:section_id', to: 'api#section_text_responses'
   get '/dashboardapi/student_progress/:section_id/:student_id', to: 'api#student_progress'
