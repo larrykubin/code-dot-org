@@ -22,6 +22,8 @@ class Plc::TasksController < ApplicationController
   # POST /plc/tasks
   # POST /plc/tasks.json
   def create
+    @task = Plc::Task.new(task_params)
+
     if @task.save
       redirect_to edit_plc_task_url(@task), notice: 'Task was successfully created.'
     else

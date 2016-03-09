@@ -20,11 +20,14 @@ class Plc::UserCourseEnrollmentsControllerTest < ActionController::TestCase
   end
 
   test "should create plc_user_course_enrollment" do
-    assert_difference('Plc::UserCourseEnrollment.count') do
-      post :create, user_email: @user.email, plc_course_id: @plc_course.id
+    3.times do
+      assert_difference('Plc::UserCourseEnrollment.count') do
+        post :create, user_email: @user.email, plc_course_id: @plc_course.id
+      end
+
+      assert_redirected_to plc_user_course_enrollment_path(assigns(:user_course_enrollment))
     end
 
-    assert_redirected_to plc_user_course_enrollment_path(assigns(:user_course_enrollment))
   end
 
   test "should show plc_user_course_enrollment" do

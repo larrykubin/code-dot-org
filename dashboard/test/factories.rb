@@ -7,6 +7,11 @@ FactoryGirl.define do
     script_id nil
   end
 
+  factory :plc_written_submission_task, parent: :plc_task, class: 'Plc::WrittenSubmissionTask' do
+    assignment_description nil
+    number_peer_reviews_needed nil
+  end
+
 
   factory :plc_evaluation_answer, :class => 'Plc::EvaluationAnswer' do
     answer "MyString"
