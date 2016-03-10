@@ -1,10 +1,10 @@
 /* global $ */
-
+var Radium = require('radium');
 
 /**
  * Simple boot-strapped style alert.
  */
-module.exports = React.createClass({
+var Alert = React.createClass({
   propTypes: {
     body: React.PropTypes.oneOfType([
       React.PropTypes.string,
@@ -16,17 +16,25 @@ module.exports = React.createClass({
   },
 
   render: function () {
-    var style = $.extend({}, {
-      position: 'absolute',
-      zIndex: 1000
-    }, this.props.style);
+    var styles = {
+      root: {
+        position: 'absolute',
+        zIndex: 1000
+      },
+      closeButton: {
+        margin: 0,
+        ':hover': {
+          backgroundColor: 'blue'
+        }
+      }
+    };
 
     return (
-      <div style={style}>
+      <div style={[styles.root, this.props.style]}>
         <div className={"alert fade in " + (this.props.className || '')}>
           <button type="button"
-            className="alert-button close"
-            style={{ margin: 0 }}>
+              className="alert-button close"
+              style={styles.closeButton}>
             <span onClick={this.props.onClose}>&times;</span>
           </button>
           {this.props.body}
@@ -35,3 +43,4 @@ module.exports = React.createClass({
     );
   }
 });
+module.exports = Radium(Alert);
