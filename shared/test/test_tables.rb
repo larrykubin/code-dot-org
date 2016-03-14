@@ -32,6 +32,8 @@ class TablesTest < Minitest::Test
     delete_record(record_id)
     assert_nil read_records.first
 
+    record_id = create_record({'name' => 'alice2', 'age' => 7, 'male' => false})
+
     delete_channel
   end
 
